@@ -1,8 +1,8 @@
 // Problem 1
 const gameSettings = {
-  difficulty: "Hard",
+  difficulty: "Easy",
   soundOn: true,
-  maxPlayers: 4
+  maxPlayers: 2
 };
 
 function problem1() {
@@ -14,8 +14,8 @@ function problem1() {
 }
 
 // Problem 2
-gameSettings.toggleSound = () => {
-  gameSettings.soundOn = !gameSettings.soundOn;
+gameSettings.toggleSound = function () {
+  this.soundOn = !this.soundOn;
 };
 
 function problem2() {
@@ -25,13 +25,13 @@ function problem2() {
 
 // Problem 3
 const smoothie = {
-  flavor: "Banana",
-  size: "Small",
-  hasProtein: true
+  flavor: "Berry",
+  size: "Large",
+  hasProtein: false
 };
 
 function problem3() {
-  let newSize = prompt("What size smoothie would you like?");
+  let newSize = prompt("Enter smoothie size:");
   if (newSize && newSize.trim() !== "") {
     smoothie.size = newSize.trim();
   }
@@ -40,9 +40,9 @@ function problem3() {
 
 // Problem 4
 const gadget = {
-  name: "Tablet",
-  batteryLife: 10,
-  isWireless: false
+  name: "Camera",
+  batteryLife: 8,
+  isWireless: true
 };
 
 function printGadgetSpecs(gadget) {
@@ -69,25 +69,25 @@ function problem5() {
   }
 
   let result = "<strong>Plants in Garden:</strong><ul>";
-  garden.plants.forEach(function (plant) {
+  for (let plant of garden.plants) {
     result += `<li>${plant}</li>`;
-  });
+  }
   result += "</ul>";
   outputDiv.innerHTML = result;
 }
 
 // Problem 6
 const playlist = {
-  name: "Chill Vibes",
+  name: "Top Hits",
   songList: [],
-  addSong(songName) {
+  addSong: function (songName) {
     this.songList.push(songName);
   }
 };
 
 function problem6() {
   for (let i = 0; i < 2; i++) {
-    let song = prompt(`Song ${i + 1}?`);
+    let song = prompt(`Enter song ${i + 1}:`);
     if (song && song.trim() !== "") {
       playlist.addSong(song.trim());
     }
@@ -99,4 +99,4 @@ function problem6() {
   }
   result += "</ul>";
   outputDiv.innerHTML = result;
-} 
+}
